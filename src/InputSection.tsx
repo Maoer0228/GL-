@@ -33,7 +33,7 @@ export const InputSection = () => {
   return (
     <div className="space-y-8 animate-slide-up pb-20">
       <div className="mb-6">
-         <div className="bg-white p-8 rounded-[24px] border border-neutral-3 flex items-center justify-between shadow-sm relative overflow-hidden">
+         <div className="bg-neutral-1 p-8 rounded-[24px] border border-neutral-3 flex items-center justify-between shadow-sm relative overflow-hidden">
             <div className="absolute top-0 right-0 right-[-10%] w-[40%] h-[150%] bg-gradient-to-l from-brand/5 to-transparent skew-x-[-20deg]" />
             <div className="relative z-10 space-y-2 max-w-2xl">
                <h3 className="text-2xl font-black text-neutral-12 tracking-tight">输入类组件 Input Components</h3>
@@ -54,7 +54,7 @@ export const InputSection = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: idx * 0.05 }}
-            className="group relative bg-white border border-neutral-3 rounded-[24px] p-6 hover:shadow-[0_20px_40px_-15px_rgba(52,123,255,0.08)] hover:border-brand/40 transition-all duration-300 overflow-hidden flex flex-col cursor-pointer active:scale-[0.98]"
+            className="group relative bg-neutral-1 border border-neutral-3 rounded-[24px] p-6 hover:shadow-[0_20px_40px_-15px_rgba(52,123,255,0.08)] hover:border-brand/40 transition-all duration-300 overflow-hidden flex flex-col cursor-pointer active:scale-[0.98]"
           >
             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-brand/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
             
@@ -62,7 +62,7 @@ export const InputSection = () => {
               <div className="w-12 h-12 bg-neutral-1 group-hover:bg-brand text-neutral-8 group-hover:text-white rounded-[16px] flex items-center justify-center transition-all duration-300 shadow-sm border border-neutral-2 group-hover:border-brand group-hover:shadow-lg group-hover:shadow-brand/20">
                 <item.icon size={22} strokeWidth={2} />
               </div>
-              <div className="bg-neutral-1 px-3 py-1 rounded-full border border-neutral-2 group-hover:bg-white transition-colors">
+              <div className="bg-neutral-1 px-3 py-1 rounded-full border border-neutral-2 group-hover:bg-neutral-0 transition-colors">
                  <span className="text-[10px] font-black text-neutral-5 group-hover:text-neutral-8 uppercase tracking-widest transition-colors">{item.name}</span>
               </div>
             </div>

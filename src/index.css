@@ -6,35 +6,36 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 
   /* Brand Colors - High Vibe */
-  --color-brand: #347BFF;
-  --color-brand-light: #E6F0FF;
-  --color-brand-dark: #1E50CC;
+  --color-brand: var(--brand-color, #347BFF);
+  --color-brand-light: var(--brand-color-light, #E6F0FF);
+  --color-brand-dark: var(--brand-color-dark, #1E50CC);
 
   /* Neutral Colors - Professional Gray Scale */
-  --color-neutral-1: #FAFAFA;
-  --color-neutral-2: #F5F5F7;
-  --color-neutral-3: #ECECEF;
-  --color-neutral-4: #E1E1E6;
-  --color-neutral-5: #C8C8D2;
-  --color-neutral-6: #9696A0;
-  --color-neutral-7: #646470;
-  --color-neutral-8: #32323E;
-  --color-neutral-9: #20202A;
-  --color-neutral-10: #14141E;
-  --color-neutral-11: #0A0A14;
-  --color-neutral-12: #02020A;
+  --color-neutral-0: var(--n0, #FFFFFF);
+  --color-neutral-1: var(--n1, #FAFAFA);
+  --color-neutral-2: var(--n2, #F5F5F7);
+  --color-neutral-3: var(--n3, #ECECEF);
+  --color-neutral-4: var(--n4, #E1E1E6);
+  --color-neutral-5: var(--n5, #C8C8D2);
+  --color-neutral-6: var(--n6, #9696A0);
+  --color-neutral-7: var(--n7, #646470);
+  --color-neutral-8: var(--n8, #32323E);
+  --color-neutral-9: var(--n9, #20202A);
+  --color-neutral-10: var(--n10, #14141E);
+  --color-neutral-11: var(--n11, #0A0A14);
+  --color-neutral-12: var(--n12, #02020A);
 
   /* Semantic Colors */
   --color-success: #35C376;
   --color-warning: #FF9D0A;
   --color-error: #F24724;
-  --color-info: #347BFF;
+  --color-info: var(--brand-color, #347BFF);
 
   /* Shadow - Soft & Deep */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 12px 24px -6px rgba(0, 0, 0, 0.1), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
-  --shadow-xl: 0 20px 40px -10px rgba(0, 0, 0, 0.15), 0 8px 16px -4px rgba(0, 0, 0, 0.08);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, var(--shadow-opacity, 0.05));
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, var(--shadow-opacity, 0.08)), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 12px 24px -6px rgba(0, 0, 0, var(--shadow-opacity, 0.1)), 0 4px 8px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 40px -10px rgba(0, 0, 0, var(--shadow-opacity, 0.15)), 0 8px 16px -4px rgba(0, 0, 0, 0.08);
 
   /* Radius */
   --radius-sm: 6px;
@@ -44,14 +45,41 @@
   --radius-full: 9999px;
 }
 
+:root {
+  --n0: #FFFFFF;
+  --n1: #FAFAFA; --n2: #F5F5F7; --n3: #ECECEF; --n4: #E1E1E6;
+  --n5: #C8C8D2; --n6: #9696A0; --n7: #646470; --n8: #32323E;
+  --n9: #20202A; --n10: #14141E; --n11: #0A0A14; --n12: #02020A;
+  --shadow-opacity: 0.05;
+}
+
+.dark {
+  --n0: #030712; /* Deeper bottom base */
+  --n1: #0A101C; /* Background layer */
+  --n2: #131A2B; /* Surface layer */
+  --n3: #202B40; /* Border/Divider */
+  --n4: #2D3D59; /* Hover/Active states */
+  --n5: #50688F; /* Secondary info */
+  --n6: #7D94B8; /* Description text */
+  --n7: #A6B9D6; /* Main body text - highly legible */
+  --n8: #C6D4EA; /* Readable light text */
+  --n9: #DEE8F5; /* Secondary heading */
+  --n10: #EEF4FA; /* Primary heading */
+  --n11: #F8FBFE; /* Vibrant white */
+  --n12: #FFFFFF; /* Pure white */
+  --shadow-opacity: 0.5;
+  --shadow-color: 0, 0, 0;
+  --brand-color-light: #16264A; /* Subtle deep blue for brand accents in dark */
+}
+
 @layer base {
   body {
-    @apply bg-neutral-1 text-neutral-10 font-sans antialiased;
+    @apply bg-neutral-0 text-neutral-8 font-sans antialiased transition-colors duration-300;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
   ::selection {
-    @apply bg-brand/10 text-brand;
+    @apply bg-brand/40 text-neutral-11;
   }
 }
 
@@ -65,7 +93,19 @@
   }
 
   .premium-blur {
-    @apply backdrop-blur-xl bg-white/70 border border-white/20;
+    @apply backdrop-blur-xl bg-white/70 border border-white/20 dark:bg-neutral-1/60 dark:border-white/5;
+  }
+  
+  .dark-glass {
+    @apply backdrop-blur-md bg-neutral-1/40 border border-white/5 shadow-2xl;
+  }
+
+  .brand-glow {
+    @apply shadow-[0_0_15px_rgba(52,123,255,0.15)] dark:shadow-[0_0_25px_rgba(52,123,255,0.25)];
+  }
+
+  .text-glow {
+    @apply dark:text-white dark:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)];
   }
 }
 
